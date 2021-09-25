@@ -4,11 +4,13 @@
 
 typesetting of intro by leo liu with latex
 
-Learning《LaTeX入门》by implementing typesetting of《LaTeX入门》
+Learn《LaTeX入门》by implementing typesetting of《LaTeX入门》
 
 
 
 ## Chap. 01
+
+
 
 ```latex
 % 
@@ -97,4 +99,24 @@ Learning《LaTeX入门》by implementing typesetting of《LaTeX入门》
 \def\@makefnmark@nosuperscript{\lower .1ex \hbox{\normalfont\@thefnmark}}
 \renewcommand*{\thefootnote}{\circnum{footnote}}
 ```
+
+
+
+TODO
+
+- Pagestyle: 
+  -  different headers on odd/even pages;
+  - (**) Chapter number in half-circle on the outer edge;
+  - (??) afterskip `\chapter*` different from `chapter`
+- References(`cleveref :: pkg`);
+- Index;
+- Newcounter of exercise;
+- Environments:
+  - danger/ddanger;
+  - Itemize env with finger icon;
+  - exercise env with pencil icon;
+  - (**) env Source code on left, outcome on right;
+  - ...
+- Linespacing in ToC
+- ...
 
