@@ -1,0 +1,174 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thisbookstyle}[2019/10/01 reduplicate book]
+
+\RequirePackage{calc}
+\RequirePackage{pifont}
+\RequirePackage{manfnt,textcomp}
+\RequirePackage{amssymb}
+\RequirePackage[artemisia]{textgreek}
+\RequirePackage{graphicx}
+% 页面尺寸及边距
+\RequirePackage[
+    papersize={180mm, 260mm},
+    scale=0.8]{geometry}
+%
+\DeclareRobustCommand\CTeXpkg{$\mathbb{C}$\kern-.05em\TeX}
+\DeclareRobustCommand\MiKTeX{Mik\TeX}
+\DeclareRobustCommand\TeXLive{\TeX{}~Live}
+\DeclareRobustCommand\greektex{\texttau\textepsilon\textchi}
+
+% 字体
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier}
+\newfontfamily\Palatino{Palatino}
+
+%
+\newcommand\chapternamebox[1]{%
+    \parbox{\ccwd}{\linespread{1}\selectfont\centering #1}}
+\ctexset {
+    secnumdepth = 3,
+    fontset = mac,
+    chapter = {
+        beforeskip = 0pt,
+        fixskip    = true,
+        format     = \Huge\bfseries\kaishu\Palatino,
+        nameformat = \rule{\linewidth}{1bp}\par\bigskip\hfill\chapternamebox,
+        number     = \arabic{chapter},
+        aftername  = \par\medskip,
+        aftertitle = \par\bigskip\nointerlineskip\rule{\linewidth}{2bp}\par,
+        afterskip  = 15pt
+    }
+}
+
+% 脚注序号带圈文字
+% From: tex.stackexchange
+\newcommand*{\circnum}[1]{%
+    \expandafter\@circnum\csname c@#1\endcsname
+}
+\newcommand*{\@circnum}[1]{%
+    \ifnum#1<1 %
+        \@ctrerr
+    \else
+        \ifnum#1>20 %
+            \@ctrerr
+        \else
+            \ding{\the\numexpr 171+(#1)\relax}%
+        \fi
+    \fi
+}
+% 取消脚注的上标格式
+% From: zhihu/muzi
+\RequirePackage{xpatch}
+% cancel the superscript style of counter used in footnote text
+\xpatchcmd\@makefntext
+{{\hss\@makefnmark}}
+{{\hss\@makefnmark@nosuperscript}\space}
+{}{\fail}
+
+\def\@makefnmark@nosuperscript{\lower .1ex \hbox{\normalfont\@thefnmark}}
+\renewcommand*{\thefootnote}{\circnum{footnote}}
+
+% titlepage
+\def\@cnpublisher{电子工业出版社}
+\def\@enpublisher{Publishing House of Electronics Industry}
+\def\@locpublisher{北京·BEIJING}
+\renewcommand{\maketitle}{%
+\begin{titlepage}
+    \centering
+    \noindent{\fontsize{40}{48}\selectfont\textbf{\@title}}
+    
+    \vspace{12mm}
+    
+    {\zihao{4}\@author\hspace{\ccwd}{\heiti 编著}}
+    
+    \vfill
+    
+    {\zihao{3}
+    \textbf{\@cnpublisher}\\
+    \textbf{\@enpublisher}\\
+    \raisebox{.1cm}{\@locpublisher}}
+    
+\end{titlepage}
+}
+
+\newenvironment{extread}[1]{%
+    \begin{quotation}\Palatino
+    \noindent\hspace*{-5em}\raisebox{-6mm}{\includegraphics[scale=0.45]{res/bookicon}}\hspace{.8em}{\zihao{4}\textbf{#1}}\vspace{-10pt}
+        
+}{%
+    \end{quotation}
+}
+
+\def\d@nger{\begingroup\clubpenalty=10000\def\par{\endgraf\endgroup}
+    \setdbend@width\noindent\hangindent\dbend@width\hangafter=-2
+    \lower-\dbend@voffset\hbox to0pt{\hskip-\hangindent\dbend\hfill}}
+%
+\def\dd@nger{\begingroup\clubpenalty=10000\def\par{\endgraf\endgroup}
+    \setdbend@width\noindent\hangindent\ddbend@width\hangafter=-2
+    \lower-\dbend@voffset\hbox to0pt{\hskip-\hangindent\dbend\kern1pt\dbend\hfill}}
+
+\def\danger{\d@nger}
+\def\ddanger{\dd@nger}
+\def\enddanger{\endgraf\endgroup}
+%
+%% 
+\let\oldfrontmatter\frontmatter
+\let\oldmainmatter\mainmatter
+\renewcommand{\frontmatter}{%
+    \oldfrontmatter
+    \@openrightfalse
+}
+\renewcommand{\mainmatter}{%
+    \oldmainmatter
+    \@openrighttrue
+}
+%
+%% toc
+\RequirePackage[titles]{tocloft}
+% 目录深度至 subsubsection
+\setcounter{tocdepth}{3}
+% 目录页面风格
+\tocloftpagestyle{empty}
+% 各层级目录字体格式
+\renewcommand{\cftchapfont}{\large\bfseries}
+\renewcommand{\cftsecfont}{\normalsize}
+\renewcommand{\cftsubsecfont}{\small}
+\renewcommand{\cftsubsubsecfont}{\small\kaishu}
+% 各层级leader格式
+% - chapter 增加点线型 leader
+\renewcommand{\cftchapleader}{\cftsecleader}
+% - subsubsec 取消leader
+\renewcommand{\cftsubsubsecdotsep}{\cftnodots}
+\renewcommand{\cftsubsubsecleader}{}
+%
+\renewcommand{\cftsubsubsecafterpnum}{\cftparfillskip}
+\let\oldcftsubsubsecpagefont\cftsubsubsecpagefont
+\renewcommand{\cftsubsubsecpagefont}{\slash\oldcftsubsubsecpagefont}
+%\renewcommand{\cftsubsubsecpnum}{\raggedright}
+
+\setlength\cftbeforesecskip{5pt}
+
+\setlength\cftsecnumwidth{1.5\ccwd}
+\setlength\cftsubsecnumwidth{2\ccwd}
+
+\setlength\cftsubsecindent{\cftsecindent + \cftsecnumwidth}
+\setlength\cftsubsecnumwidth{0pt}
+
+% 不显示subsubsec章节号
+%\renewcommand{\cftsubsubsecpresnum}{\begin{lrbox}{\@tempboxa}}
+%\renewcommand{\cftsubsubsecaftersnum}{\end{lrbox}}
+%\setlength\cftsubsubsecindent{\cftsecindent}
+%\setlength\cftsubsubsecnumwidth{0pt}
+
+% subsubsec - 去章节号; 同行排列; 点号分隔
+\RequirePackage{titletoc}
+\titlecontents*{subsubsection}% <section>
+[5.em]% <left>
+{\small\kaishu\Palatino}% <above-code>
+{}% <numbered-entry-format>; you could also use {\thecontentslabel. } to show the numbers
+{}% <numberless-entry-format>
+{\slash\thecontentspage}% <filler-page-format>
+[\hspace{\ccwd}•\hspace{\ccwd}]% <separator>
+[]% <end>
+

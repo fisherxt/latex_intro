@@ -1,0 +1,56 @@
+\chapter{熟悉\LaTeX}
+{\LaTeX}是一种基于{\TeX}的文档排版系统。{\TeX}只这么交错起伏的几个字母，便道出了“排版”二字的积分意味：精确、复杂、注重细节和品位。而{\LaTeX}则为了减轻这种写作、排版一肩挑的负担，把大片排版的格式细节隐藏在若干样式之后，以内容的逻辑结构统帅纷繁的格式，遂成为现在最流行的科技写作——尤其是数学写作的工具之一。
+
+无论你是因为心慕{\LaTeX}漂亮的输出结果，还是因为要写论文投稿被逼上梁山，都不得不面对一个事实：{\LaTeX}是一种并不简单的计算机语言，不能只点点鼠标就弄好一篇漂亮的文章。也不是一两个小时的泛泛了解就尽能对付的过去的\footnote{是的，有一个著名的入门教程就叫《112分钟学会{\LaTeX}》。不过这个分钟其实是以页码计算的，粗粗浏览一遍还远算不上学会。而且即使掌握了这个教程中的内容，仍然可能在实际写作中遇到许多难以解决的问题。本书同样不打算让你能迅速成为一个高手。}。还得拿出点上学搞研究时的那股钻研劲儿，才能通过手指下的键盘，编排出整齐漂亮的文章来。
+
+\begin{extread}{\LaTeX{} 的读音和写法}
+    \TeX 一名源自 technology 的希腊词根\greektex，\TeX 之父高德纳教授\footnote{Donald Ervin Knuth，Stanford大学计算机程序设计艺术荣誉教授，Turing奖和von Neumann奖得主。高德纳是他的中文名字。\TeX 系统就是高德纳为了排版他的七卷本著作《计算机程序设计艺术》而编制的。}近乎固执地要求它的发音必须是（按国际音标）\textipa{[tEx]}，尽管英语中它常被读作\textipa{[tEk]}。（同样，高德纳教授也近乎固执地要求别人说他的姓Knuth时不要丢掉“K”，叫他Ka-NOOTH，尽管在英语环境他时长会变成Nooth教授。）对比汉语，\TeX 的发音近似于“泰赫”，而且可以用汉语拼音准确地拼出来：\textsf{t\char"00EAh}~(或许老一辈的人习惯用注音：ㄊㄝㄏ)。
+    
+    \LaTeX 这个名字则是把\LaTeX 之父Lamport博士的姓和\TeX 混合得到的。所以\LaTeX 大约应该读成“拉泰赫”。不过人们仍然按着自己的理解和拼写发音习惯去读它：\textipa{["la:tEk]}、\textipa{["leItEk]}或是\textipa{[la:"tEk]}，甚至不怎么合理的\textipa{["leItEks]}。好在Lamport并不介意\LaTeX 到底被读作什么。“读音最好由习惯决定，而不是法令。”——Lamport如是说。
+    
+    两个创始人对于名称和读音的不同态度或许多少说明了这样一个事实：\LaTeX 相对原始的\TeX 更少关注排版的细节，因此\LaTeX 在很多时候并不充当专业排版软件的角色，而只是一个文档编写工具。而当人们在\LaTeX 中也抱以追求完美的态度并用到一些平时不太使用的命令时，通常总说这是在\TeX 层面排版——尽管\LaTeX 本身正是运行于\TeX 之上的。
+    
+\end{extread}
+
+\section{让\LaTeX{} 跑起来}
+学习\LaTeX 的第一步就是上手试一试，让\LaTeX 跑起来。首先安装\TeX 系统及其他一些必要的软件，然后跑一个测试的例子。下面的几节包含了一大堆具体软件安装和使用的内容，虽然有些繁琐。
+
+\subsection{\LaTeX{} 的发行版及其安装}
+
+\subsubsection{\CTeXpkg 套装}
+\noindent\makebox[0pt][r]{\dbend~\dbend\,}\hspace{2\ccwd}\CTeXpkg 套装是由中国科学院的吴凌云制作并维护的一个面向中文用户的Windows系统下的发行版。这个发行版事实上是对另一个发行版\MiKTeX 的再包装，除了\MiKTeX 主体以外，\CTeXpkg 套装增加了WinEdt作为主要编辑器，以及PDF预览器SumatraPDF，PostScript文件预览器GSview，PostScript解释器GhostScript，一些旧的中文支持包和工具（如CCT系统）和其他一些有关中文的额外配置（如额外中文字体配置）。
+
+\subsubsection{\TeXLive}
+\TeXLive{} 是由TUG（\TeX{} User Group，\TeX 用户组）发布的一个发行版。\TeXLive 可以在类UNIX/Linux、Mac OS X和Windows等不同的操作系统平台下安装使用，并且提供相当可靠的工作环境 ̈。\TeXLive{} 可以安装到硬盘上运行，也可以经过便携（portable）方式安装刻录在光盘上直接运行（故有“Live”之称）。有两种安装\TeXLive{} 的方式：一是从\TeXLive{} 光盘进行安装，二是从网络在线安装。不同操作系统下安装设置\TeXLive{} 的方式基本一样，这里仍以Windows操作系统为例进行演示。
+
+\subsection{编辑器与周边工具}
+
+\subsubsection{编辑器举例——TeXworks}
+
+\subsubsection{PDF阅读器}
+
+\subsubsection{命令行工具}
+
+\subsection{“Happy \TeX{}ing”与“特可爱排版”}
+
+\section{从一个例子说起}
+
+\subsection{确定目标}
+
+\subsection{从提纲开始}
+
+\subsection{填写正文}
+
+\subsection{命令与环境}
+
+\subsection{遭遇数学公式}
+
+\subsection{使用图表}
+
+\subsection{自动化工具}
+
+\subsection{设计文章的格式}
+
+\section*{本章注记}
+\addcontentsline{toc}{section}{本章注记}
+
