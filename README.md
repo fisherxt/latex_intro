@@ -105,18 +105,18 @@ Learn《LaTeX入门》by implementing typesetting of《LaTeX入门》
 TODO
 
 - Pagestyle: 
-  -  different headers on odd/even pages;
-  - (**) Chapter number in half-circle on the outer edge;
-  - (??) afterskip `\chapter*` different from `chapter`
+  - odd/even pages;
+  - thumb index;
+  - afterskip `\chapter*`/`chapter` (`CTEXifname{}{}`)
 - References(`cleveref :: pkg`);
 - Index;
-- Newcounter of exercise;
+- Exercise;
 - Environments:
-  - danger/ddanger;
-  - Itemize env with finger icon;
-  - exercise env with pencil icon;
-  - (**) env Source code on left, outcome on right;
+  - danger/ddanger icon;
+  - itermize, finger icon;
+  - example, pencil icon;
+  - tboxlisting
   - ...
-- Linespacing in ToC
+- ToC
 - ...
 
